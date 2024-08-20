@@ -67,6 +67,5 @@ namespace KeyLab
             timeLeft = 20; // Reset the countdown time
             label1.Text = "00:20"; // Reset the Label text
         }
-
     }
 }

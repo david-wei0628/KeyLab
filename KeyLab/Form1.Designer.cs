@@ -61,9 +61,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("新細明體", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label1.Location = new System.Drawing.Point(40, 210);
+            this.label1.Location = new System.Drawing.Point(12, 209);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(90, 35);
+            this.label1.Size = new System.Drawing.Size(93, 34);
             this.label1.TabIndex = 2;
             this.label1.Text = "label1";
             // 
@@ -79,6 +79,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
+            this.KeyPreview = true;
             this.Name = "Form1";
             this.Text = "Form1";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
