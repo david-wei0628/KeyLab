@@ -14,11 +14,15 @@ namespace KeyLab
     {
         private Timer countdownTimer;
         private int timeLeft;
+        private GlobalKeyboardHook _globalKeyboardHook;
 
         public Form1()
         {
             InitializeComponent();
+
             Application.AddMessageFilter(new KeyboardMessageFilter());
+            _globalKeyboardHook = new GlobalKeyboardHook();
+
             countdownTimer = new Timer();
             countdownTimer.Interval = 1000; // Interval set to 1 second
             countdownTimer.Tick += CountdownTimer_Tick;
