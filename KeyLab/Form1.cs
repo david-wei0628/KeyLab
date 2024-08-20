@@ -18,6 +18,7 @@ namespace KeyLab
         public Form1()
         {
             InitializeComponent();
+            Application.AddMessageFilter(new KeyboardMessageFilter());
             countdownTimer = new Timer();
             countdownTimer.Interval = 1000; // Interval set to 1 second
             countdownTimer.Tick += CountdownTimer_Tick;
@@ -25,7 +26,7 @@ namespace KeyLab
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            MessageBox.Show(e.KeyCode.ToString());
+            label2.Text = e.KeyData.ToString();
         }
 
         private void CountdownTimer_Tick(object sender, EventArgs e)
@@ -67,5 +68,6 @@ namespace KeyLab
             timeLeft = 20; // Reset the countdown time
             label1.Text = "00:20"; // Reset the Label text
         }
+
     }
 }
