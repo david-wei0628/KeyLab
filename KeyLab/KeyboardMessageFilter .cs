@@ -72,8 +72,18 @@ namespace KeyLab
             {
                 int vkCode = Marshal.ReadInt32(lParam);
                 Console.WriteLine((Keys)vkCode);
+                LabKeymode((Keys)vkCode);
+
             }
             return CallNextHookEx(_hookID, nCode, wParam, lParam);
+        }
+
+        public void LabKeymode(object vKey)
+        {
+            if (vKey.ToString() == "A")
+            {
+                SendKeys.Send("%{TAB}");
+            }
         }
     }
 

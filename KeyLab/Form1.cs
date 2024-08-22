@@ -20,7 +20,7 @@ namespace KeyLab
         {
             InitializeComponent();
 
-            Application.AddMessageFilter(new KeyboardMessageFilter());
+            //Application.AddMessageFilter(new KeyboardMessageFilter());
             _globalKeyboardHook = new GlobalKeyboardHook();
 
             countdownTimer = new Timer();
