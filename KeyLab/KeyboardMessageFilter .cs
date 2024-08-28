@@ -46,6 +46,8 @@ namespace KeyLab
         private LowLevelKeyboardProc _proc;
         private IntPtr _hookID = IntPtr.Zero;
 
+        private Form1 form1;
+
         public GlobalKeyboardHook()
         {
             _proc = HookCallback;
@@ -80,9 +82,18 @@ namespace KeyLab
 
         public void LabKeymode(object vKey)
         {
-            if (vKey.ToString() == "A")
+            //if (vKey.ToString() == "A")
+            //{
+            //    //SendKeys.Send("%{TAB}");
+            //    string customText = "Hello, World!";
+            //    // 使用 SendKeys.Send 方法來模擬按鍵輸入
+            //    SendKeys.Send(customText);
+            //}
+
+            if (vKey.ToString() == /*"F1"*/"S")
             {
-                SendKeys.Send("%{TAB}");
+                form1 = new Form1();    
+                form1.ATt();
             }
         }
     }
