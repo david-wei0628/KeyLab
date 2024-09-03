@@ -46,7 +46,7 @@ namespace KeyLab
         private LowLevelKeyboardProc _proc;
         private IntPtr _hookID = IntPtr.Zero;
 
-        private Form1 form1;
+        public Form1 form1;
 
         public GlobalKeyboardHook()
         {
@@ -73,9 +73,10 @@ namespace KeyLab
             if (nCode >= 0 && wParam == (IntPtr)WM_KEYDOWN)
             {
                 int vkCode = Marshal.ReadInt32(lParam);
-                Console.WriteLine((Keys)vkCode);
+                form1 = new Form1();
                 LabKeymode((Keys)vkCode);
-
+                //Console.WriteLine(vkCode.ToString());
+                UnhookWindowsHookEx(_hookID);
             }
             return CallNextHookEx(_hookID, nCode, wParam, lParam);
         }
@@ -92,10 +93,10 @@ namespace KeyLab
 
             if (vKey.ToString() == /*"F1"*/"S")
             {
-                form1 = new Form1();    
                 form1.ATt();
             }
         }
+
     }
 
 }

@@ -13,8 +13,9 @@ namespace KeyLab
     public partial class Form1 : Form
     {
         public Timer countdownTimer;
-        private int timeLeft;
+        public int timeLeft;
         private GlobalKeyboardHook _globalKeyboardHook;
+        private BackgroundWorker worker = new BackgroundWorker();
 
         public Form1()
         {
@@ -25,13 +26,17 @@ namespace KeyLab
             TitleSetting titleBarSetting = new TitleSetting(this, "自定義標題欄");
             this.Controls.Add(titleBarSetting);///自定義標題欄設定
 
-            this.TransparencyKey = System.Drawing.Color.Lime;
+            this.TransparencyKey = Color.Lime;
             PlaneSetting planeSetting = new PlaneSetting();
             planeSetting.Parent = this; // 確保 Panel 的父控件是 Form
             this.Controls.Add(planeSetting);
 
-
+            this.KeyPreview = true;
             //Application.AddMessageFilter(new KeyboardMessageFilter());
+
+            worker.WorkerReportsProgress = true;
+            worker.WorkerSupportsCancellation = true;
+            backgroundWorker1.ProgressChanged += new ProgressChangedEventHandler(backgroundWorker1_ProgressChanged);
 
             _globalKeyboardHook = new GlobalKeyboardHook();
 
@@ -54,6 +59,7 @@ namespace KeyLab
             if (timeLeft > 0)
             {
                 timeLeft--;
+                Console.WriteLine(timeLeft);
                 //label1.Text = TimeSpan.FromSeconds(timeLeft).ToString(@"mm\:ss +"); // Update the Label with the new timeLeft value
                 //label1.Text = timeLeft.ToString(@"mm\:ss"); // Update the Label with the new timeLeft value
                 try
@@ -77,10 +83,12 @@ namespace KeyLab
         private void startButton_Click(object sender, EventArgs e)
         {
             timeLeft = 600; // Set the countdown time in seconds
+                Console.WriteLine(timeLeft);
             //label1.Text = "10:00" /*+ timeLeft.ToString()*/;
             try
             {
-                countdownTimer.Start();
+                //countdownTimer.Start();
+                ATt();
             }
             catch { }
         }
@@ -88,15 +96,16 @@ namespace KeyLab
         private void resetButton_Click(object sender, EventArgs e)
         {
             countdownTimer.Stop();
-            timeLeft = 20; // Reset the countdown time
-            label1.Text = "00:20"; // Reset the Label text
+            timeLeft = 600; // Reset the countdown time
+            label1.Text = "10:00"; // Reset the Label text
         }
 
         public void ATt()
         {
+            countdownTimer.Dispose();
             timeLeft = 600; // Set the countdown time in seconds
             label1.Text = "10:00" /*+ timeLeft.ToString()*/;
-            MessageBox.Show("A");
+            KeyTest();
             try
             {
                 countdownTimer.Start();
@@ -104,5 +113,26 @@ namespace KeyLab
             catch { }
         }
 
+        public void KeyTest()
+        {
+            label2.Text = " ";
+
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            Console.WriteLine("A");
+        }
+
+        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            //MessageBox.Show(":");
+        }
+
+        private void Form1_Deactivate(object sender, EventArgs e)
+        {
+            label2.Text = timeLeft.ToString();
+            worker.RunWorkerAsync();
+        }
     }
 }
