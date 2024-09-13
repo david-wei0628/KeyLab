@@ -46,7 +46,12 @@ namespace KeyLab
         private LowLevelKeyboardProc _proc;
         private IntPtr _hookID = IntPtr.Zero;
 
-        public Form1 form1;
+        private Form1 form1;
+
+        public GlobalKeyboardHook(Form1 form)
+        {
+            form1 = form;
+        }
 
         public GlobalKeyboardHook()
         {
@@ -90,13 +95,17 @@ namespace KeyLab
             //    // 使用 SendKeys.Send 方法來模擬按鍵輸入
             //    SendKeys.Send(customText);
             //}
+            int TimeData = form1.SharedTimeData;
+            Console.WriteLine(form1.SharedTimeData);
 
-            if (vKey.ToString() == /*"F1"*/"S")
+            if (vKey.ToString() == /*"F1"*/"S" && TimeData == 0)
             {
                 form1.ATt();
+                //MessageBox.Show(Form1.timeLeft.ToString());
             }
         }
 
+       
     }
 
 }

@@ -13,9 +13,11 @@ namespace KeyLab
     public partial class Form1 : Form
     {
         public Timer countdownTimer;
-        public int timeLeft;
+        //public static int timeLeft;
+        private int timeLeft;
         private GlobalKeyboardHook _globalKeyboardHook;
         private BackgroundWorker worker = new BackgroundWorker();
+        //private int TimeMemory = 600;
 
         public Form1()
         {
@@ -38,28 +40,35 @@ namespace KeyLab
             worker.WorkerSupportsCancellation = true;
             backgroundWorker1.ProgressChanged += new ProgressChangedEventHandler(backgroundWorker1_ProgressChanged);
 
-            _globalKeyboardHook = new GlobalKeyboardHook();
+            _globalKeyboardHook = new GlobalKeyboardHook();//鍵盤訊號擷取
 
             countdownTimer = new Timer();
             countdownTimer.Interval = 1000; // Interval set to 1 second
             countdownTimer.Tick += CountdownTimer_Tick;
+
+        }
+
+        public int SharedTimeData
+        {
+            get { return timeLeft; }
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            label2.Text = e.KeyData.ToString();
-            if (e.KeyData.ToString() == "S")
-            {
-                ATt();
-            }
+            //label2.Text = e.KeyData.ToString();
+
+            //if (e.KeyData.ToString() == "S")
+            //{
+            //    //ATt();
+            //}
         }
 
-        private void CountdownTimer_Tick(object sender, EventArgs e)
+        public void CountdownTimer_Tick(object sender, EventArgs e)
         {
+            //Console.WriteLine(SharedTimeData.ToString());
             if (timeLeft > 0)
             {
                 timeLeft--;
-                Console.WriteLine(timeLeft);
                 //label1.Text = TimeSpan.FromSeconds(timeLeft).ToString(@"mm\:ss +"); // Update the Label with the new timeLeft value
                 //label1.Text = timeLeft.ToString(@"mm\:ss"); // Update the Label with the new timeLeft value
                 try
@@ -78,34 +87,42 @@ namespace KeyLab
                 label1.Text = "Time's up!";
                 //SendKeys.Send("{F1}");
             }
+
+            if (timeLeft == 5)
+            {
+                //label2.Text = ActiveForm.ToString();
+                //KeyTest();
+                Console.WriteLine(label2.Text);
+            }
         }
 
         private void startButton_Click(object sender, EventArgs e)
         {
             timeLeft = 600; // Set the countdown time in seconds
-                Console.WriteLine(timeLeft);
-            //label1.Text = "10:00" /*+ timeLeft.ToString()*/;
+                            //Console.WriteLine(timeLeft);
+                            //label1.Text = "10:00" /*+ timeLeft.ToString()*/;
             try
             {
-                //countdownTimer.Start();
-                ATt();
+                countdownTimer.Start();
+                //ATt();
             }
             catch { }
         }
 
         private void resetButton_Click(object sender, EventArgs e)
         {
-            countdownTimer.Stop();
-            timeLeft = 600; // Reset the countdown time
-            label1.Text = "10:00"; // Reset the Label text
+            //countdownTimer.Stop();
+            //timeLeft = 600; // Reset the countdown time
+            //label1.Text = "10:00"; // Reset the Label text
+            ////Console.WriteLine(Form.ActiveForm);
+            worker.Dispose();
         }
 
         public void ATt()
         {
             countdownTimer.Dispose();
-            timeLeft = 600; // Set the countdown time in seconds
+            timeLeft = 10; // Set the countdown time in seconds
             label1.Text = "10:00" /*+ timeLeft.ToString()*/;
-            KeyTest();
             try
             {
                 countdownTimer.Start();
@@ -115,13 +132,22 @@ namespace KeyLab
 
         public void KeyTest()
         {
-            label2.Text = " ";
-
+            label2.Text = label2.Text + timeLeft.ToString();
+            try
+            {
+                label2.Invoke(new Action(() => label2.Text = timeLeft.ToString()));
+            }
+            catch { }
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             Console.WriteLine("A");
+            if (timeLeft == 5)
+            {
+                Console.WriteLine("5A5");
+
+            }
         }
 
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -132,7 +158,25 @@ namespace KeyLab
         private void Form1_Deactivate(object sender, EventArgs e)
         {
             label2.Text = timeLeft.ToString();
-            worker.RunWorkerAsync();
+
+            timeLeft = 10;
+            try
+            {
+                countdownTimer.Start();
+            }
+            catch { }
+            //worker.RunWorkerAsync();
+
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Console.WriteLine("BKR");
+            if (e.Error == null && !e.Cancelled)
+            {
+                Console.WriteLine("Test");
+                label2.Text = timeLeft.ToString();
+            }
         }
     }
 }
