@@ -13,11 +13,15 @@ namespace KeyLab
     public partial class Form1 : Form
     {
         public Timer countdownTimer;
-        //public static int timeLeft;
-        private int timeLeft;
+        public static int timeLeft;
+        //private int timeLeft;
         private GlobalKeyboardHook _globalKeyboardHook;
         private BackgroundWorker worker = new BackgroundWorker();
-        //private int TimeMemory = 600;
+
+        public int SharedTimeData
+        {
+            get { return timeLeft; }
+        }
 
         public Form1()
         {
@@ -41,17 +45,13 @@ namespace KeyLab
             backgroundWorker1.ProgressChanged += new ProgressChangedEventHandler(backgroundWorker1_ProgressChanged);
 
             _globalKeyboardHook = new GlobalKeyboardHook();//鍵盤訊號擷取
-
+           
             countdownTimer = new Timer();
             countdownTimer.Interval = 1000; // Interval set to 1 second
             countdownTimer.Tick += CountdownTimer_Tick;
 
         }
 
-        public int SharedTimeData
-        {
-            get { return timeLeft; }
-        }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
@@ -88,12 +88,12 @@ namespace KeyLab
                 //SendKeys.Send("{F1}");
             }
 
-            if (timeLeft == 5)
-            {
-                //label2.Text = ActiveForm.ToString();
-                //KeyTest();
-                Console.WriteLine(label2.Text);
-            }
+            //if (timeLeft == 5)
+            //{
+            //    //label2.Text = ActiveForm.ToString();
+            //    //KeyTest();
+            //    Console.WriteLine(label2.Text);
+            //}
         }
 
         private void startButton_Click(object sender, EventArgs e)
@@ -157,9 +157,9 @@ namespace KeyLab
 
         private void Form1_Deactivate(object sender, EventArgs e)
         {
-            label2.Text = timeLeft.ToString();
 
             timeLeft = 10;
+            label2.Text = timeLeft.ToString();
             try
             {
                 countdownTimer.Start();

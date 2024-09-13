@@ -95,8 +95,10 @@ namespace KeyLab
             //    // 使用 SendKeys.Send 方法來模擬按鍵輸入
             //    SendKeys.Send(customText);
             //}
-            int TimeData = form1.SharedTimeData;
-            Console.WriteLine(form1.SharedTimeData);
+
+            int TimeData = Form1.timeLeft;
+            //int TimeData = form1.SharedTimeData;
+            Console.WriteLine(TimeData);
 
             if (vKey.ToString() == /*"F1"*/"S" && TimeData == 0)
             {
@@ -104,8 +106,6 @@ namespace KeyLab
                 //MessageBox.Show(Form1.timeLeft.ToString());
             }
         }
-
-       
     }
 
 }
