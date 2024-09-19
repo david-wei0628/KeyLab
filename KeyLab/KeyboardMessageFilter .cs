@@ -78,10 +78,12 @@ namespace KeyLab
             if (nCode >= 0 && wParam == (IntPtr)WM_KEYDOWN)
             {
                 int vkCode = Marshal.ReadInt32(lParam);
+                
                 form1 = new Form1();
                 LabKeymode((Keys)vkCode);
                 //Console.WriteLine(vkCode.ToString());
                 UnhookWindowsHookEx(_hookID);
+
             }
             return CallNextHookEx(_hookID, nCode, wParam, lParam);
         }

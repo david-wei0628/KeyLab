@@ -42,10 +42,10 @@ namespace KeyLab
 
             worker.WorkerReportsProgress = true;
             worker.WorkerSupportsCancellation = true;
-            backgroundWorker1.ProgressChanged += new ProgressChangedEventHandler(backgroundWorker1_ProgressChanged);
+            //backgroundWorker1.ProgressChanged += new ProgressChangedEventHandler(backgroundWorker1_ProgressChanged);
 
             _globalKeyboardHook = new GlobalKeyboardHook();//鍵盤訊號擷取
-           
+
             countdownTimer = new Timer();
             countdownTimer.Interval = 1000; // Interval set to 1 second
             countdownTimer.Tick += CountdownTimer_Tick;
@@ -55,17 +55,17 @@ namespace KeyLab
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            //label2.Text = e.KeyData.ToString();
+            label2.Text = e.KeyData.ToString();
 
             //if (e.KeyData.ToString() == "S")
             //{
-            //    //ATt();
+            //    ATt();
             //}
         }
 
         public void CountdownTimer_Tick(object sender, EventArgs e)
         {
-            //Console.WriteLine(SharedTimeData.ToString());
+            Console.WriteLine(SharedTimeData.ToString());
             if (timeLeft > 0)
             {
                 timeLeft--;
@@ -140,43 +140,43 @@ namespace KeyLab
             catch { }
         }
 
-        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
-        {
-            Console.WriteLine("A");
-            if (timeLeft == 5)
-            {
-                Console.WriteLine("5A5");
+        //private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        //{
+        //    Console.WriteLine("A");
+        //    if (timeLeft == 5)
+        //    {
+        //        Console.WriteLine("5A5");
 
-            }
-        }
+        //    }
+        //}
 
-        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-            //MessageBox.Show(":");
-        }
+        //private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        //{
+        //    //MessageBox.Show(":");
+        //}
 
-        private void Form1_Deactivate(object sender, EventArgs e)
-        {
+        //private void Form1_Deactivate(object sender, EventArgs e)
+        //{
 
-            timeLeft = 10;
-            label2.Text = timeLeft.ToString();
-            try
-            {
-                countdownTimer.Start();
-            }
-            catch { }
-            //worker.RunWorkerAsync();
+        //    timeLeft = 10;
+        //    label2.Text = timeLeft.ToString();
+        //    try
+        //    {
+        //        countdownTimer.Start();
+        //    }
+        //    catch { }
+        //    worker.RunWorkerAsync();
 
-        }
+        //}
 
-        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            Console.WriteLine("BKR");
-            if (e.Error == null && !e.Cancelled)
-            {
-                Console.WriteLine("Test");
-                label2.Text = timeLeft.ToString();
-            }
-        }
+        //private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        //{
+        //    Console.WriteLine("BKR");
+        //    if (e.Error == null && !e.Cancelled)
+        //    {
+        //        Console.WriteLine("Test");
+        //        label2.Text = timeLeft.ToString();
+        //    }
+        //}
     }
 }
