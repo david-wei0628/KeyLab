@@ -104,7 +104,8 @@ namespace KeyLab
 
             if (vKey.ToString() == /*"F1"*/"S" && TimeData == 0)
             {
-                form1.ATt();
+                //form1.ATt();
+                
                 //MessageBox.Show(Form1.timeLeft.ToString());
             }
         }

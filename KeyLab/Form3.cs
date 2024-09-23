@@ -27,21 +27,33 @@ namespace KeyLab
             _globalKeyboardHook = new GlobalKeyboardHook_BPlane();
             _globalKeyboardHook.KeyPressed += GlobalKeyboardHook_KeyPressed;
             _globalKeyboardHook.SetHook();
+
+            label1.Text = null;
+            ComboBoxItem();
         }
 
         private void GlobalKeyboardHook_KeyPressed(object sender, KeyEventArgs e)
         {
+            labelCountdown.Text = e.KeyData.ToString();
+            //label1.Text += e.KeyData.ToString();
+
+            //if (e.KeyCode == Keys.F1)
             if (e.KeyCode == Keys.C)
             {
                 try
                 {
                     // 執行輔助操作
-                    //MessageBox.Show("F1 key pressed! to c");
-                    labelCountdown.Text = "F1 KEYCODE to assdsa";
+                    //MessageBox.Show("F1 key pressed!");
+                    if (countdownValue != 0)
+                    {
+                        countdownTimer.Stop();
+                        countdownValue = 0;
+                    }
+                    CountTime();
                 }
-                catch 
+                catch
                 {
-                    
+
                 }
             }
         }
@@ -54,23 +66,103 @@ namespace KeyLab
 
         private void buttonStart_Click(object sender, EventArgs e)
         {
-            countdownValue = 50;
-            labelCountdown.Text = countdownValue.ToString();
-            countdownTimer.Start();
+            CountTime();
+            //countdownValue = 50;
+            //labelCountdown.Text = countdownValue.ToString();
+            //countdownTimer.Start();
         }
 
         private void CountdownTimer_Tick(object sender, EventArgs e)
         {
+            //if (countdownValue > 0)
+            //{
+            //    countdownValue--;
+            //    labelCountdown.Text = countdownValue.ToString();
+            //}
+            //else
+            //{
+            //    countdownTimer.Stop();
+            //    labelCountdown.Text = "Time's up!";
+            //}
+
             if (countdownValue > 0)
             {
                 countdownValue--;
-                labelCountdown.Text = countdownValue.ToString();
+                //label1.Text = TimeSpan.FromSeconds(timeLeft).ToString(@"mm\:ss +"); // Update the Label with the new timeLeft value
+                //label1.Text = timeLeft.ToString(@"mm\:ss"); // Update the Label with the new timeLeft value
+                try
+                {
+                    labelCountdown.Text = TimeSpan.FromSeconds(countdownValue).ToString(@"mm\:ss");
+                }
+                catch (Exception ex)
+                {
+                    // Handle the exception here
+                    Console.WriteLine("An error occurred: " + ex.Message);
+                }
             }
             else
             {
                 countdownTimer.Stop();
                 labelCountdown.Text = "Time's up!";
+                //SendKeys.Send("{F1}");
             }
+        }
+
+        private void CountTime()
+        {
+            countdownValue = Int32.Parse(comboBox1.Text);
+            //labelCountdown.Text = countdownValue.ToString();
+            labelCountdown.Text = TimeSpan.FromSeconds(countdownValue).ToString(@"mm\:ss");
+            countdownTimer.Start();
+        }
+
+        private void ComboBoxItem()
+        {
+            comboBox1.Items.Add(60);
+            //comboBox1.Items.Add(TimeSpan.FromSeconds(60).ToString(@"mm\:ss"));
+            comboBox1.Items.Add(120);
+            //comboBox1.Items.Add(TimeSpan.FromSeconds(120).ToString(@"mm\:ss"));
+            comboBox1.Items.Add(300);
+            //comboBox1.Items.Add(TimeSpan.FromSeconds(300).ToString(@"mm\:ss"));
+            comboBox1.Items.Add(600);
+            //comboBox1.Items.Add(TimeSpan.FromSeconds(600).ToString(@"mm\:ss"));
+
+            comboBox1.SelectedIndex = 0;
+        }
+
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode >= Keys.A && e.KeyCode <= Keys.Z)
+            {
+                textBox1.Text = e.KeyCode.ToString().ToUpper();
+            }
+            else if (e.KeyCode >= Keys.D0 && e.KeyCode <= Keys.D9)
+            {
+                textBox1.Text = e.KeyCode.ToString().Substring(1);
+            }
+            else if (e.KeyCode >= Keys.F1 && e.KeyCode <= Keys.F12)
+            {
+                textBox1.Text = e.KeyCode.ToString();
+            }
+            else
+            {
+                switch (e.KeyCode)
+                {
+                    default:
+                        textBox1.Text = "UNKNOWN";
+                        break;
+                }
+
+            }
+
+
+
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+            //擋textbox的按鍵輸入
         }
     }
 }
