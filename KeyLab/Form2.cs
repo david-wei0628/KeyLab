@@ -12,10 +12,14 @@ namespace KeyLab
 {
     public partial class Form2 : Form
     {
-        CaptureClass CCType = new CaptureClass();
+        //CaptureClass CCType = new CaptureClass();
+        private PictureBox pictureBox;
+
         public Form2()
         {
             InitializeComponent();
+
+            InitializeStreaming();
         }
 
         /*private Bitmap CaptureScreen()
@@ -59,10 +63,10 @@ namespace KeyLab
         private void buttonCapture_Click(object sender, EventArgs e)
         {
             //Bitmap screenshot = CaptureScreen();
-            Bitmap screenshot = CCType.CaptureWindowsScreen();
+            //Bitmap screenshot = CCType.CaptureWindowsScreen();
             //Bitmap screenshot = CCType.CaptureMouseArea(200, 200);
             // 將截圖顯示在 PictureBox 中
-            pictureBox1.Image = screenshot;
+            //pictureBox1.Image = screenshot;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -73,6 +77,42 @@ namespace KeyLab
             //Controls.Add(pictureBox1);
             //Controls.Add(buttonCapture);         
 
+        }
+
+        private void InitializeStreaming()
+        {
+            pictureBox = new PictureBox
+            {
+                Dock = DockStyle.Fill,
+                SizeMode = PictureBoxSizeMode.StretchImage
+            };
+            //panel1.Controls.Add(pictureBox);
+
+            Task.Run(() => StartStreaming());
+        }
+
+        private void StartStreaming()
+        {
+            while (true)
+            {
+                // 這裡加入取得視訊流影像的程式碼
+                // 例如：Image frame = GetVideoFrame();
+
+                // 更新 UI 執行緒上的 PictureBox
+                pictureBox.Invoke((MethodInvoker)delegate
+                {
+                    pictureBox.Image = GetVideoFrame();
+                });
+
+                // 控制更新頻率
+                System.Threading.Thread.Sleep(1000 / 30); // 每秒更新 30 次
+            }
+        }
+
+        private Image GetVideoFrame()
+        {
+            // 模擬取得影像的程式碼
+            return new Bitmap(320, 240);
         }
     }
 }

@@ -14,6 +14,7 @@ namespace KeyLab
     {
         private GlobalKeyboardHook_BPlane _globalKeyboardHook;
         private int countdownValue = 10;
+        private Keys KeyValue;
 
         public Form3()
         {
@@ -34,11 +35,12 @@ namespace KeyLab
 
         private void GlobalKeyboardHook_KeyPressed(object sender, KeyEventArgs e)
         {
-            labelCountdown.Text = e.KeyData.ToString();
-            //label1.Text += e.KeyData.ToString();
-
+            //labelCountdown.Text = e.KeyData.ToString();
+            label1.Text = e.KeyData.ToString();
+            label3.Text += e.KeyData.ToString();
             //if (e.KeyCode == Keys.F1)
-            if (e.KeyCode == Keys.C)
+            //if (e.KeyCode == Keys.C)
+            if (e.KeyCode == KeyValue)
             {
                 try
                 {
@@ -103,6 +105,7 @@ namespace KeyLab
             else
             {
                 countdownTimer.Stop();
+                SendKeys.Send(textBox1.Text);
                 labelCountdown.Text = "Time's up!";
                 //SendKeys.Send("{F1}");
             }
@@ -144,19 +147,7 @@ namespace KeyLab
             {
                 textBox1.Text = e.KeyCode.ToString();
             }
-            else
-            {
-                switch (e.KeyCode)
-                {
-                    default:
-                        textBox1.Text = "UNKNOWN";
-                        break;
-                }
-
-            }
-
-
-
+            KeyValue = e.KeyCode;
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
