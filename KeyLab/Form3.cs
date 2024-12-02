@@ -35,12 +35,16 @@ namespace KeyLab
 
         private void GlobalKeyboardHook_KeyPressed(object sender, KeyEventArgs e)
         {
+            if (label3.Text.Length > 20)
+            {
+                label3.Text = null; 
+            }
             //labelCountdown.Text = e.KeyData.ToString();
             label1.Text = e.KeyData.ToString();
             label3.Text += e.KeyData.ToString();
             //if (e.KeyCode == Keys.F1)
             //if (e.KeyCode == Keys.C)
-            if (e.KeyCode == KeyValue)
+            if (e.KeyCode == KeyValue && textBox1.Focused == false)
             {
                 try
                 {
@@ -155,5 +159,6 @@ namespace KeyLab
             e.Handled = true;
             //擋textbox的按鍵輸入
         }
+
     }
 }
