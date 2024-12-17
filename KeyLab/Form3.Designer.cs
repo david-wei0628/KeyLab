@@ -36,6 +36,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.NewSecText = new System.Windows.Forms.Label();
+            this.NewSecBox = new System.Windows.Forms.TextBox();
+            this.NewSecBTN = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -43,11 +46,11 @@
             // 
             this.labelCountdown.AutoSize = true;
             this.labelCountdown.Font = new System.Drawing.Font("新細明體", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.labelCountdown.Location = new System.Drawing.Point(12, 185);
+            this.labelCountdown.Location = new System.Drawing.Point(183, 35);
             this.labelCountdown.Name = "labelCountdown";
-            this.labelCountdown.Size = new System.Drawing.Size(81, 29);
+            this.labelCountdown.Size = new System.Drawing.Size(63, 29);
             this.labelCountdown.TabIndex = 0;
-            this.labelCountdown.Text = "label1";
+            this.labelCountdown.Text = "0:00";
             // 
             // buttonStart
             // 
@@ -63,10 +66,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("新細明體", 21.75F);
-            this.label1.Location = new System.Drawing.Point(178, 185);
+            this.label1.Font = new System.Drawing.Font("UD Digi Kyokasho NK-R", 12F);
+            this.label1.Location = new System.Drawing.Point(14, 192);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 29);
+            this.label1.Size = new System.Drawing.Size(56, 18);
             this.label1.TabIndex = 2;
             this.label1.Text = "label1";
             // 
@@ -89,6 +92,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(120, 36);
             this.comboBox1.TabIndex = 5;
+            this.comboBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.element_KeyPress);
             // 
             // textBox1
             // 
@@ -98,16 +102,47 @@
             this.textBox1.Size = new System.Drawing.Size(71, 35);
             this.textBox1.TabIndex = 6;
             this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
-            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.element_KeyPress);
+            // 
+            // NewSecText
+            // 
+            this.NewSecText.AutoSize = true;
+            this.NewSecText.Font = new System.Drawing.Font("UD Digi Kyokasho NK-R", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.NewSecText.Location = new System.Drawing.Point(124, 242);
+            this.NewSecText.Name = "NewSecText";
+            this.NewSecText.Size = new System.Drawing.Size(77, 18);
+            this.NewSecText.TabIndex = 7;
+            this.NewSecText.Text = "新增秒數:";
+            // 
+            // NewSecBox
+            // 
+            this.NewSecBox.Font = new System.Drawing.Font("UD Digi Kyokasho NK-R", 12F);
+            this.NewSecBox.Location = new System.Drawing.Point(201, 234);
+            this.NewSecBox.Name = "NewSecBox";
+            this.NewSecBox.Size = new System.Drawing.Size(58, 26);
+            this.NewSecBox.TabIndex = 8;
+            this.NewSecBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NewSecBox_KeyPress);
+            // 
+            // NewSecBTN
+            // 
+            this.NewSecBTN.Font = new System.Drawing.Font("UD Digi Kyokasho NK-R", 12F);
+            this.NewSecBTN.Location = new System.Drawing.Point(252, 229);
+            this.NewSecBTN.Name = "NewSecBTN";
+            this.NewSecBTN.Size = new System.Drawing.Size(51, 34);
+            this.NewSecBTN.TabIndex = 10;
+            this.NewSecBTN.Text = "新增";
+            this.NewSecBTN.UseVisualStyleBackColor = true;
+            this.NewSecBTN.Click += new System.EventHandler(this.NewSecBTN_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 242);
+            this.label3.Font = new System.Drawing.Font("UD Digi Kyokasho NK-R", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label3.Location = new System.Drawing.Point(14, 174);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(33, 12);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "label3";
+            this.label3.Size = new System.Drawing.Size(76, 18);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "按鍵紀錄:";
             // 
             // Form3
             // 
@@ -115,6 +150,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(315, 263);
             this.Controls.Add(this.label3);
+            this.Controls.Add(this.NewSecBTN);
+            this.Controls.Add(this.NewSecBox);
+            this.Controls.Add(this.NewSecText);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label1);
@@ -137,6 +175,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label NewSecText;
+        private System.Windows.Forms.TextBox NewSecBox;
+        private System.Windows.Forms.Button NewSecBTN;
         private System.Windows.Forms.Label label3;
     }
 }

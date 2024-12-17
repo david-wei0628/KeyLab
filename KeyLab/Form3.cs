@@ -35,13 +35,20 @@ namespace KeyLab
 
         private void GlobalKeyboardHook_KeyPressed(object sender, KeyEventArgs e)
         {
-            if (label3.Text.Length > 20)
+            if (label1.Text.Length > 20)
             {
-                label3.Text = null; 
+                label1.Text = null;
             }
-            //labelCountdown.Text = e.KeyData.ToString();
-            label1.Text = e.KeyData.ToString();
-            label3.Text += e.KeyData.ToString();
+            if (NewSecBox.Focused == false)
+            {
+                //labelCountdown.Text = e.KeyData.ToString();
+                //label1.Text = e.KeyData.ToString();
+                label1.Text += e.KeyData.ToString();
+                //label3.Text += e.KeyData.ToString();
+            }
+            ////labelCountdown.Text = e.KeyData.ToString();
+            //label1.Text = e.KeyData.ToString();
+            //label3.Text += e.KeyData.ToString();
             //if (e.KeyCode == Keys.F1)
             //if (e.KeyCode == Keys.C)
             if (e.KeyCode == KeyValue && textBox1.Focused == false)
@@ -129,6 +136,8 @@ namespace KeyLab
             //comboBox1.Items.Add(TimeSpan.FromSeconds(60).ToString(@"mm\:ss"));
             comboBox1.Items.Add(120);
             //comboBox1.Items.Add(TimeSpan.FromSeconds(120).ToString(@"mm\:ss"));
+            comboBox1.Items.Add(180);
+            //comboBox1.Items.Add(TimeSpan.FromSeconds(120).ToString(@"mm\:ss"));
             comboBox1.Items.Add(300);
             //comboBox1.Items.Add(TimeSpan.FromSeconds(300).ToString(@"mm\:ss"));
             comboBox1.Items.Add(600);
@@ -154,11 +163,32 @@ namespace KeyLab
             KeyValue = e.KeyCode;
         }
 
-        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        private void element_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        /*private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
             //擋textbox的按鍵輸入
         }
 
+        private void comboBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }*/
+
+        private void NewSecBTN_Click(object sender, EventArgs e)
+        {
+            var NewSecVar = new int();
+            NewSecVar = int.Parse(NewSecBox.Text);
+            comboBox1.Items.Add(NewSecVar);            
+        }
+
+        private void NewSecBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back) { e.Handled = true; }
+        }
     }
 }
