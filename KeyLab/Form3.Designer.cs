@@ -40,6 +40,7 @@
             this.NewSecBox = new System.Windows.Forms.TextBox();
             this.NewSecBTN = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labelCountdown
@@ -54,7 +55,7 @@
             // 
             // buttonStart
             // 
-            this.buttonStart.Font = new System.Drawing.Font("UD Digi Kyokasho NP-B", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.buttonStart.Location = new System.Drawing.Point(12, 21);
             this.buttonStart.Name = "buttonStart";
             this.buttonStart.Size = new System.Drawing.Size(155, 81);
@@ -66,37 +67,37 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("UD Digi Kyokasho NK-R", 12F);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label1.Location = new System.Drawing.Point(14, 192);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 18);
+            this.label1.Size = new System.Drawing.Size(51, 20);
             this.label1.TabIndex = 2;
             this.label1.Text = "label1";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("UD Digi Kyokasho NK-R", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label2.Location = new System.Drawing.Point(12, 126);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(162, 28);
+            this.label2.Size = new System.Drawing.Size(155, 29);
             this.label2.TabIndex = 4;
             this.label2.Text = "計時時間(秒):";
             // 
             // comboBox1
             // 
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.Font = new System.Drawing.Font("UD Digi Kyokasho NK-R", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(170, 118);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(120, 36);
+            this.comboBox1.Size = new System.Drawing.Size(120, 37);
             this.comboBox1.TabIndex = 5;
             this.comboBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.element_KeyPress);
             // 
             // textBox1
             // 
-            this.textBox1.Font = new System.Drawing.Font("UD Digi Kyokasho NK-R", 18F);
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
             this.textBox1.Location = new System.Drawing.Point(188, 67);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(71, 35);
@@ -107,16 +108,16 @@
             // NewSecText
             // 
             this.NewSecText.AutoSize = true;
-            this.NewSecText.Font = new System.Drawing.Font("UD Digi Kyokasho NK-R", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.NewSecText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.NewSecText.Location = new System.Drawing.Point(124, 242);
             this.NewSecText.Name = "NewSecText";
-            this.NewSecText.Size = new System.Drawing.Size(77, 18);
+            this.NewSecText.Size = new System.Drawing.Size(77, 20);
             this.NewSecText.TabIndex = 7;
             this.NewSecText.Text = "新增秒數:";
             // 
             // NewSecBox
             // 
-            this.NewSecBox.Font = new System.Drawing.Font("UD Digi Kyokasho NK-R", 12F);
+            this.NewSecBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.NewSecBox.Location = new System.Drawing.Point(201, 234);
             this.NewSecBox.Name = "NewSecBox";
             this.NewSecBox.Size = new System.Drawing.Size(58, 26);
@@ -125,7 +126,7 @@
             // 
             // NewSecBTN
             // 
-            this.NewSecBTN.Font = new System.Drawing.Font("UD Digi Kyokasho NK-R", 12F);
+            this.NewSecBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.NewSecBTN.Location = new System.Drawing.Point(252, 229);
             this.NewSecBTN.Name = "NewSecBTN";
             this.NewSecBTN.Size = new System.Drawing.Size(51, 34);
@@ -137,18 +138,30 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("UD Digi Kyokasho NK-R", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label3.Location = new System.Drawing.Point(14, 174);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(76, 18);
+            this.label3.Size = new System.Drawing.Size(77, 20);
             this.label3.TabIndex = 11;
             this.label3.Text = "按鍵紀錄:";
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(13, 226);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(77, 33);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "STOP";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.StopBTN_Click);
             // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(315, 263);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.NewSecBTN);
             this.Controls.Add(this.NewSecBox);
@@ -179,5 +192,6 @@
         private System.Windows.Forms.TextBox NewSecBox;
         private System.Windows.Forms.Button NewSecBTN;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button1;
     }
 }

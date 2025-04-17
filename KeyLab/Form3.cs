@@ -190,5 +190,10 @@ namespace KeyLab
         {
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back) { e.Handled = true; }
         }
+
+        private void StopBTN_Click(object sender, EventArgs e)
+        {
+            countdownTimer.Stop();
+        }
     }
 }
