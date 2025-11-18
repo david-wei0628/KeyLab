@@ -151,6 +151,8 @@ namespace KeyLab
             if (e.KeyCode >= Keys.A && e.KeyCode <= Keys.Z)
             {
                 textBox1.Text = e.KeyCode.ToString().ToUpper();
+                //textBox1.Text = e.KeyCode.ToString().ToLower(); 
+                //textBox1.Text = e.KeyData.ToString(); 
             }
             else if (e.KeyCode >= Keys.D0 && e.KeyCode <= Keys.D9)
             {
