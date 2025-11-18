@@ -40,7 +40,7 @@
             this.NewSecBox = new System.Windows.Forms.TextBox();
             this.NewSecBTN = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.StopBTN = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labelCountdown
@@ -147,21 +147,21 @@
             // 
             // button1
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(13, 226);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(77, 33);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "STOP";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.StopBTN_Click);
+            this.StopBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StopBTN.Location = new System.Drawing.Point(13, 226);
+            this.StopBTN.Name = "StopBTN";
+            this.StopBTN.Size = new System.Drawing.Size(77, 33);
+            this.StopBTN.TabIndex = 12;
+            this.StopBTN.Text = "STOP";
+            this.StopBTN.UseVisualStyleBackColor = true;
+            this.StopBTN.Click += new System.EventHandler(this.StopBTN_Click);
             // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(315, 263);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.StopBTN);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.NewSecBTN);
             this.Controls.Add(this.NewSecBox);
@@ -192,6 +192,6 @@
         private System.Windows.Forms.TextBox NewSecBox;
         private System.Windows.Forms.Button NewSecBTN;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button StopBTN;
     }
 }

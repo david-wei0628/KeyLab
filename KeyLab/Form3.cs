@@ -158,7 +158,7 @@ namespace KeyLab
             }
             else if (e.KeyCode >= Keys.F1 && e.KeyCode <= Keys.F12)
             {
-                textBox1.Text = e.KeyCode.ToString();
+                textBox1.Text = "{" + e.KeyCode.ToString() + "}";
             }
             KeyValue = e.KeyCode;
         }
