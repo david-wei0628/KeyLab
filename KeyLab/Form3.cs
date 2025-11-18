@@ -116,7 +116,8 @@ namespace KeyLab
             else
             {
                 countdownTimer.Stop();
-                SendKeys.Send(textBox1.Text);
+                //SendKeys.Send(textBox1.Text);
+                SendKeys.Send(KeyValue.ToString().ToLower());
                 labelCountdown.Text = "Time's up!";
                 //SendKeys.Send("{F1}");
             }
@@ -151,7 +152,7 @@ namespace KeyLab
             if (e.KeyCode >= Keys.A && e.KeyCode <= Keys.Z)
             {
                 textBox1.Text = e.KeyCode.ToString().ToUpper();
-                //textBox1.Text = e.KeyCode.ToString().ToLower(); 
+                //textBox1.Text = e.KeyCode.ToString().ToLower();
                 //textBox1.Text = e.KeyData.ToString(); 
             }
             else if (e.KeyCode >= Keys.D0 && e.KeyCode <= Keys.D9)
@@ -185,7 +186,7 @@ namespace KeyLab
         {
             var NewSecVar = new int();
             NewSecVar = int.Parse(NewSecBox.Text);
-            comboBox1.Items.Add(NewSecVar);            
+            comboBox1.Items.Add(NewSecVar);
         }
 
         private void NewSecBox_KeyPress(object sender, KeyPressEventArgs e)
