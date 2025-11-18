@@ -116,8 +116,8 @@ namespace KeyLab
             else
             {
                 countdownTimer.Stop();
-                //SendKeys.Send(textBox1.Text);
-                SendKeys.Send(KeyValue.ToString().ToLower());
+                SendKeys.Send(textBox1.Text.ToLower());
+                //SendKeys.Send(KeyValue.ToString().ToLower());
                 labelCountdown.Text = "Time's up!";
                 //SendKeys.Send("{F1}");
             }
